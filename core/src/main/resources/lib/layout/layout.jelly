@@ -152,6 +152,7 @@ ${h.initPageVariables(context)}
         <a id="jenkins-home-link" href="${rootURL}/">
           <img id="jenkins-head-icon" src="${imagesURL}/jenkins-redbg.png" alt="title" />
           <img id="jenkins-name-icon" src="${imagesURL}/title.png" alt="title" width="139" height="34" />
+          <h1 id="jenkins-title">Jenkins</h1>
         </a>
       </div>
       <div class="login">
