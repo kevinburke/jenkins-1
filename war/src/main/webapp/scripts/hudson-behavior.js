@@ -1,19 +1,19 @@
 /*
  * The MIT License
- * 
+ *
  * Copyright (c) 2004-2010, Sun Microsystems, Inc., Kohsuke Kawaguchi,
  * Daniel Dyer, Yahoo! Inc., Alan Harder, InfraDNA, Inc.
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -567,7 +567,7 @@ function renderOnDemand(e,callback,noBehaviour) {
 }
 
 /**
- * Finds all the script tags 
+ * Finds all the script tags
  */
 function evalInnerHtmlScripts(text,callback) {
     var q = [];
@@ -686,7 +686,7 @@ var jenkinsRules = {
         registerRegexpValidator(e,/^(\d*[1-9]\d*|)$/,"Not a positive integer");
     },
 
-    "INPUT.auto-complete": function(e) {// form field with auto-completion support 
+    "INPUT.auto-complete": function(e) {// form field with auto-completion support
         // insert the auto-completion container
         var div = document.createElement("DIV");
         e.parentNode.insertBefore(div,$(e).next()||null);
@@ -698,7 +698,7 @@ var jenkinsRules = {
             resultsList: "suggestions",
             fields: ["name"]
         };
-        
+
         // Instantiate the AutoComplete
         var ac = new YAHOO.widget.AutoComplete(e, div, ds);
         ac.generateRequest = function(query) {
@@ -754,7 +754,7 @@ var jenkinsRules = {
             var cmdKeyDown = false;
             var mode = e.getAttribute("script-mode") || "text/x-groovy";
             var readOnly = eval(e.getAttribute("script-readOnly")) || false;
-            
+
             var w = CodeMirror.fromTextArea(e,{
               mode: mode,
               lineNumbers: true,
@@ -779,7 +779,7 @@ var jenkinsRules = {
                 function getParentForm(element) {
                     if (element == null) throw 'not found a parent form';
                     if (element instanceof HTMLFormElement) return element;
-                    
+
                     return getParentForm(element.parentNode);
                 }
                 function saveAndSubmit() {
@@ -787,7 +787,7 @@ var jenkinsRules = {
                     getParentForm(e).submit();
                     event.stop();
                 }
-                
+
                 // Mac (Command + Enter)
                 if (navigator.userAgent.indexOf('Mac') > -1) {
                     if (event.type == 'keydown' && isCommandKey()) {
@@ -800,7 +800,7 @@ var jenkinsRules = {
                         saveAndSubmit();
                         return true;
                     }
-                  
+
                 // Windows, Linux (Ctrl + Enter)
                 } else {
                     if (event.ctrlKey && isReturnKeyDown()) {
@@ -1212,16 +1212,8 @@ var jenkinsRules = {
         // initial positioning
         Element.observe(window,"load",adjustSticker);
         adjustSticker();
-    },
-
-    "#tasks .task-link-group" : function(task) {
-        var anchors = task.getElementsByTagName("A");
-        if (anchors && anchors.length > 0) {
-            task.onclick = function () {
-                anchors[0].click();
-            }
-        }
     }
+
 };
 /** @deprecated Use {@link Behaviour.specify} instead. */
 var hudsonRules = jenkinsRules; // legacy name
@@ -1455,14 +1447,14 @@ function expandTextArea(button,id) {
     button.style.display="none";
     var field = button.parentNode.previousSibling.children[0];
     var value = field.value.replace(/ +/g,'\n');
-    
-    var n = button; 
+
+    var n = button;
     while (n.tagName != "TABLE")
     {
         n = n.parentNode;
     }
 
-    n.parentNode.innerHTML = 
+    n.parentNode.innerHTML =
         "<textarea rows=8 class='setting-input' name='"+field.name+"'>"+value+"</textarea>";
     layoutUpdateCallback.call();
 }
@@ -1490,13 +1482,13 @@ function refreshPart(id,url) {
                     if(isRunAsTest) return;
                     refreshPart(id,url);
                 }
-            });    
+            });
         } else {
             // Reschedule
             if(isRunAsTest) return;
             refreshPart(id,url);
         }
-        
+
     };
     // if run as test, just do it once and do it now to make sure it's working,
     // but don't repeat.
@@ -1699,7 +1691,7 @@ function createSearchBox(searchURL) {
         sizer.innerHTML = box.value.escapeHTML();
         var w = max(sizer.offsetWidth,minW.offsetWidth);
         box.style.width =
-        comp.style.width = 
+        comp.style.width =
         comp.firstChild.style.width = (w+60)+"px";
 
         var pos = YAHOO.util.Dom.getXY(box);
@@ -1826,7 +1818,7 @@ function buildFormTree(form) {
                 addProperty(findParent(e),e.name,values);
                 continue;
             }
-                
+
             var p;
             var r;
             var type = e.getAttribute("type");
@@ -1956,7 +1948,7 @@ var hoverNotification = (function() {
         document.body.appendChild(div);
         div.innerHTML = "<div id=hoverNotification><div class=bd></div></div>";
         body = $('hoverNotification');
-        
+
         msgBox = new YAHOO.widget.Overlay(body, {
           visible:false,
           width:"10em",
